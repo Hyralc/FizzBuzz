@@ -70,4 +70,4 @@ include_directories(${PATH_TO_BOOST_HEADERS})
 
 link_directories(${PROJECT_BINARY_DIR}/libs)
 add_executable(fizzBuzzTests fizzBuzzTests.cpp)
-target_link_libraries(fizzBuzzTests "fizzBuzz.lib")
+target_link_libraries(fizzBuzzTests fizzBuzz)
