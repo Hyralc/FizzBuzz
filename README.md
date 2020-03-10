@@ -17,7 +17,7 @@ Pre-requisite :
 	
 Run cmake :
 
-	- Create a directory named "build" next to :
+	- Create a directory named "build" next to <path-to-fizz-buzz-work-dir> / tests / src :
 		<path-to-fizz-buzz-work-dir> / tests / build
 	- cd <path-to-fizz-buzz-work-dir> / tests / build
 	- run cmake command (caution : fill the cmd with your own boost library path) :
