@@ -9,5 +9,5 @@ int main()
 	fizzBuzz fizBuzPlay(1);
 	fizzBuzzProxy proxy(&fizBuzPlay);
 	int res = proxy;
-	cout << "res : " << res << endl;
+	cout << "RES : " << res << endl;
 }
