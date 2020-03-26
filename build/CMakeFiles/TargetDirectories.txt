@@ -1,0 +1,7 @@
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/rebuild_cache.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/fizzBuzzProxy.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/fizzBuzz.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/unit_tests.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/test.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/say_hello_to_charly.dir
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/build/CMakeFiles/edit_cache.dir

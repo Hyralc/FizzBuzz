@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/fizzBuzzLib/include/fizzBuzz.h
+string
+-
+
+/home/mozgawamar/Documents/cplusplus/test_fizzbuzz/FizzBuzz/src/fizzBuzzLib/src/fizzBuzz.cpp
+../include/fizzBuzz.h
+-
+
