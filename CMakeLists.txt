@@ -3,7 +3,7 @@ project(Fizzbuzz LANGUAGES CXX)
 
 # Add local project module path so CMake includes custom CMake modules.
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
-# 
+#
 # include(CTest)
 # finds boost, triggers an error otherwise
 find_package(Boost 1.66 REQUIRED COMPONENTS unit_test_framework)
@@ -76,7 +76,7 @@ target_compile_options(say_hello_to_charly
 )
 
 #
-# Create a target for executing the Catch unit tests.
+# Create a target for executing the Boost unit tests.
 #
  add_executable(unit_tests
  	tests/fizzBuzzTests.cpp
@@ -85,7 +85,13 @@ target_compile_options(say_hello_to_charly
  	PUBLIC
 		src/fizzBuzzLib/include/
  		tests/
+    PRIVATE
+        ${Boost_INCLUDE_DIRS}
  )
+target_compile_definitions(unit_tests
+    PRIVATE
+        "BOOST_TEST_DYN_LINK=1"
+)
 # indicates the link paths
  target_link_libraries(unit_tests
 	fizzBuzz
@@ -99,30 +105,5 @@ target_compile_options(say_hello_to_charly
  		$<$<CXX_COMPILER_ID:MSVC>:
  			/W4>
  )
-
-# Load and use the .cmake file provided by Catch so all the test cases
-# are made available to CTest.
-# include(ParseAndAddCatchTests)
-# ParseAndAddCatchTests(unit_tests)
-# 
-# install(
-# 	TARGETS unit_tests
-# 	RUNTIME DESTINATION bin
-# )
-# 
-# set(CPACK_PACKAGE_NAME "Hello")
-# set(CPACK_PACKAGE_VENDOR "erichschroeter.com")
-# set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Hello - CPack Component Installation Example")
-# set(CPACK_PACKAGE_VERSION "1.0.0")
-# set(CPACK_PACKAGE_VERSION_MAJOR "1")
-# set(CPACK_PACKAGE_VERSION_MINOR "0")
-# set(CPACK_PACKAGE_VERSION_PATCH "0")
-# set(CPACK_PACKAGE_INSTALL_DIRECTORY "Hello CPack Component Example")
-# 
-# # This must always be last!
-# include(CPack)
-
-set(hello "Hello World")
-message(STATUS "hello, ${hello}")
 
 add_test(NAME test1 COMMAND unit_tests)
