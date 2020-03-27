@@ -6,7 +6,7 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 #
 # include(CTest)
 # finds boost, triggers an error otherwise
-find_package(Boost 1.66 REQUIRED COMPONENTS unit_test_framework)
+find_package(Boost 1.65 REQUIRED COMPONENTS unit_test_framework)
 enable_testing()
 
 message("** BOOST_PATH : ${BOOST_PATH}")
@@ -107,3 +107,4 @@ target_compile_definitions(unit_tests
  )
 
 add_test(NAME test1 COMMAND unit_tests)
+
