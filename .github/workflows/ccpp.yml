@@ -6,9 +6,11 @@ jobs:
   build-ubuntu:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v1
+    - name: boost install
+      run: sudo apt-get install libboost1.66-dev
     - name: configure
       run: mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-Werror" ..
     - name: build
