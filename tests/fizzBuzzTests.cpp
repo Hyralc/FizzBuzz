@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(supplyInteger15__getFizzBuzz)
 	fizzBuzz fizBuzPlay(15);
 	fizzBuzzProxy proxy(&fizBuzPlay);
 	string res = proxy;
-	BOOST_REQUIRE_EQUAL("FizzBuz", res);
+	BOOST_REQUIRE_EQUAL("FizzBuzz", res);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
