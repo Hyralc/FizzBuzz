@@ -34,4 +34,4 @@ Remark :
 	  by removing the content of the build directory.
 		
 		
-	test3
+	test2
