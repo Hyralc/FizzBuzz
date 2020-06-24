@@ -12,26 +12,36 @@ A first step to get started with :
 	``` bash
 		$ sudo apt-get install libboost-all-dev
 	```
-	- On Windows, prefer using vcpkg :
+	- On Windows, prefer using vcpkg, so you should have vcpkg installed on your machine.
 	``` bash
 		\> cd D:\path\to\your\vcpkg
+		\> vcpkg install boost-test:x64-windows
 	```
 - **cmake** (version > 3.5)
 	
-Run cmake :
+## Building and testing
+The following commands generate build files for fizzbuzz program, then build it and eventually run its unit tests.
+### On Linux
+``` bash
+	$ cd /path/your/FizzBuzz/Repo
+	$ cmake -S . -B build -DCMAKE_CXX_FLAGS="-Werror"
+	$ cmake --build build
+	$ cd build && ctest
+```
+### On Windows
+``` bash
+	\> cd D:\path\your\FizzBuzz\Repo
+	\> cmake -G "Visual Studio 16 2019" -A x64 [-DCMAKE_BUILD_TYPE=release] -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake . -B build
+```
+Then make the build with your visual studio. Indeed, if you run :
+``` bash
+	\> cmake --build build
+```
+builds only in debug mode and does not take release mode into account.
+Then run unit tests by typing : 
+``` bash
+	\> cd build
+	\> ctest -C Release
+```
 
-	- Create a directory named "build" next to <path-to-fizz-buzz-work-dir> / tests / src :
-		<path-to-fizz-buzz-work-dir> / tests / build
-	- cd <path-to-fizz-buzz-work-dir> / tests / build
-	- run cmake command (caution : fill the cmd with your own boost library path) :
-		cmake ../src -DFIZZBUZZ_ROOT=../../sources/fizzBuzzLib -DBOOST_PATH=path/to/boost_1_72_0
-
-Then run the generated makefile.
-
-	- On Windows, a .sln file could have been generated if Visual Studio has been spotted by cmake program.
-	  In that case, just open it and run a build.
-
-Remark :
-
-	- Everything that is generated and built by actions described above can be thoroughly undone
-	  by removing the content of the build directory.
+**Remark** : Everything that is generated and built by actions described above can be thoroughly undone by removing the content of the build directory.
