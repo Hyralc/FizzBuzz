@@ -32,16 +32,9 @@ The following commands generate build files for fizzbuzz program, then build it 
 ``` bash
 	\> cd D:\path\your\FizzBuzz\Repo
 	\> cmake -G "Visual Studio 16 2019" -A x64 [-DCMAKE_BUILD_TYPE=release] -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake . -B build
-```
-Then make the build with your visual studio. Indeed, if you run :
-``` bash
-	\> cmake --build build
-```
-builds only in debug mode and does not take release mode into account.
-Then run unit tests by typing : 
-``` bash
+	\> cmake --build build --config Release
 	\> cd build
-	\> ctest -C Release
+	\> ctest
 ```
 
 **Remark** : Everything that is generated and built by actions described above can be thoroughly undone by removing the content of the build directory.
