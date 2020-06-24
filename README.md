@@ -1,19 +1,22 @@
-Fizz Buzz game :
-	a first step to get started with :
-	
-	- Unit tests in C++
-	- cmake : a generator of compilation scripts
+## Fizz Buzz game
+A first step to get started with :
+
+- Unit tests in C++
+- cmake : a generator of compilation scripts
 
 
-Pre-requisite :
+## Pre-requisite
 
-	- Boost.Test :
-		You should get boost library installed on your computer.
-		You can download version 1.72 from :
-			https://www.boost.org/users/history/version_1_72_0.html
-		Do not hesitate to download a newer version.
-		Simply unpack it in any local directory.
-	- cmake
+- **Boost.Test** : You should get boost library installed on your computer.
+	- On Linux :
+	``` bash
+		$ sudo apt-get install libboost-all-dev
+	```
+	- On Windows, prefer using vcpkg :
+	``` bash
+		\> cd D:\path\to\your\vcpkg
+	```
+- **cmake** (version > 3.5)
 	
 Run cmake :
 
@@ -32,5 +35,3 @@ Remark :
 
 	- Everything that is generated and built by actions described above can be thoroughly undone
 	  by removing the content of the build directory.
-		
-	test2
