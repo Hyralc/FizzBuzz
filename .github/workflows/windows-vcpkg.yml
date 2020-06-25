@@ -3,9 +3,10 @@ name: windows with vcpkg
 on: push
 
 jobs:
+
   build-on-windows:
 
-    runs-os: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
