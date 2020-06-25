@@ -42,7 +42,10 @@ jobs:
           cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
           buildDirectory: ${{ runner.workspace }}/build
           cmakeBuildType: ${{ matrix.buildtype }}
-          
-        
+      
+      - name: Test
+        run: |
+             cd build
+             ctest
       
     
