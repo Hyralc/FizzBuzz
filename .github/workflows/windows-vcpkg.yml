@@ -39,8 +39,8 @@ jobs:
         uses: lukka/run-cmake@v2
         with:
           useVcpkgToolchainFile: true
-          cmakeListsTxtPath: '${{ github.workspace }}/src/CMakeLists.txt'
-          buildDirectory: ${{ runner.workspace }}/src/build
+          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
+          buildDirectory: ${{ runner.workspace }}/build
           cmakeBuildType: ${{ matrix.buildtype }}
           
         
