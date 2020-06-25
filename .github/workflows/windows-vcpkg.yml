@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-on-windows:
-    run-os: ${{ matrix.os }}
+    runs-os: ${{ matrix.os }}
     strategy:
       matrix:
         os: [windows-latest]
