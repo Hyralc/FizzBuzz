@@ -44,8 +44,6 @@ jobs:
           cmakeBuildType: ${{ matrix.buildtype }}
       
       - name: Test
-        run: |
-             cd build
-             ctest
+        run: ctest
       
     
