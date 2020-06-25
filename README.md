@@ -29,10 +29,11 @@ The following commands generate build files for fizzbuzz program, then build it 
 	$ cd build && ctest
 ```
 ### On Windows
+Let **vcpkg_path** be the variable containing the absolute path to your vcpkg.
 ``` bash
 	\> cd D:\path\your\FizzBuzz\Repo
 	\> cmake -G "Visual Studio 16 2019" -A x64 [-DCMAKE_BUILD_TYPE=release] -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake . -B build
-	\> cmake --build build --config Release
+	\> cmake --build build [--config Release]
 	\> cd build
 	\> ctest
 ```
