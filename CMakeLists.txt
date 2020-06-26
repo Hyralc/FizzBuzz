@@ -6,92 +6,11 @@ project(Fizzbuzz LANGUAGES CXX)
 find_package(Boost 1.65 REQUIRED COMPONENTS unit_test_framework)
 enable_testing()
 
-add_library(fizzBuzz
-	src/fizzBuzzLib/include/fizzBuzz.h
-	src/fizzBuzzLib/src/fizzBuzz.cpp
-)
-target_include_directories(fizzBuzz
-	PUBLIC
-		src/fizzBuzzLib/include/
-)
 
+add_subdirectory(src)
 
-target_compile_options(fizzBuzz
-	PRIVATE
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-			-Werror -Wall -Wextra>
-		$<$<CXX_COMPILER_ID:MSVC>:
-			/W4>
-)
+add_subdirectory(tests)
 
-# Added library counter
-add_library(fizzBuzzProxy
-	src/fizzBuzzLib/include/fizzBuzzProxy.h
-	src/fizzBuzzLib/src/fizzBuzzProxy.cpp
-)
-target_include_directories(fizzBuzzProxy
-	PUBLIC
-		src/fizzBuzzLib/include/
-)
-target_compile_options(fizzBuzzProxy
-	PRIVATE
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-			-Werror -Wall -Wextra>
-		$<$<CXX_COMPILER_ID:MSVC>:
-			/W4>
-)
-
-
-#
-# Create executable that uses the hello lib to say Hello.
-#
-add_executable(say_hello_to_charly
-	src/main.cpp
-)
-target_link_libraries(say_hello_to_charly
-	PRIVATE
-		fizzBuzz
-		fizzBuzzProxy
-)
-
-target_compile_options(say_hello_to_charly
-	PRIVATE
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-			-Werror -Wall -Wextra>
-		$<$<CXX_COMPILER_ID:MSVC>:
-			/W4>
-)
-
-#
-# Create a target for executing the Boost unit tests.
-#
- add_executable(unit_tests
- 	tests/fizzBuzzTests.cpp
- )
- # No need to add linked libraries include directories (see the further link instruction),
- # since they are PUBLIC on that matter.
- target_include_directories(unit_tests
-    PRIVATE
-        ${Boost_INCLUDE_DIRS}
- )
-
-target_compile_definitions(unit_tests
-    PRIVATE
-        "BOOST_TEST_DYN_LINK=1"
-)
-# Indicates the link paths
- target_link_libraries(unit_tests
-	fizzBuzz
-	fizzBuzzProxy
-	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
- )
- target_compile_options(unit_tests
- 	PRIVATE
- 		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
- 			-Werror -Wall -Wextra>
- 		$<$<CXX_COMPILER_ID:MSVC>:
- 			/W4>
- )
 
 add_test(NAME test1 COMMAND unit_tests)
 
