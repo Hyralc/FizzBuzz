@@ -54,6 +54,8 @@ jobs:
       #       dir
         
       - name: Test
-        run: ctest
+        run: |
+             cd build
+             ctest
       
     
