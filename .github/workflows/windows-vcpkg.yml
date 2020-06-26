@@ -39,7 +39,7 @@ jobs:
         with:
           useVcpkgToolchainFile: true
           cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-          buildDirectory: ${{ runner.workspace }}/build
+          buildDirectory: ${{ github.workspace }}/build
           cmakeBuildType: ${{ matrix.buildtype }}
       
       - name: where am i
@@ -48,10 +48,10 @@ jobs:
       - name: list dir
         run: dir
         
-      - name : go up and look around
-        run: |
-             cd ..
-             dir
+      # - name : go up and look around
+      #  run: |
+      #       cd ..
+      #       dir
         
       #- name: Test
       #  run: ctest
