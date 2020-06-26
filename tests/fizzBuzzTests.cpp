@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(supplyIntegerOne__getIntegerOne)
 	fizzBuzz fizBuzPlay(1);
 	fizzBuzzProxy proxy(&fizBuzPlay);
 	int res = proxy;
-	BOOST_REQUIRE_EQUAL(0, res);
+	BOOST_REQUIRE_EQUAL(1, res);
 }
 
 BOOST_AUTO_TEST_CASE(supplyInteger2__getInteger2)
