@@ -1,4 +1,4 @@
-#include <../include/fizzBuzzProxy.h>
+#include "fizzBuzzProxy.h"
 
 fizzBuzzProxy::operator int() const
 {

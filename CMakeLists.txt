@@ -1,23 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 project(Fizzbuzz LANGUAGES CXX)
 
-# Add local project module path so CMake includes custom CMake modules.
-list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
-#
-# include(CTest)
+
 # finds boost, triggers an error otherwise
 find_package(Boost 1.65 REQUIRED COMPONENTS unit_test_framework)
 enable_testing()
-
-message("** BOOST_PATH : ${BOOST_PATH}")
-
-# if (NOT DEFINED BOOST_INCLUDE_DIRS)
-#     message(FATAL_ERROR "BOOST_INCLUDE_DIRS unset. Please set Boost_ROOT_DIR to the location of boost sources")
-# else()
-#     message(STATUS "Compiling boost from ${BOOST_INCLUDE_DIRS}.")
-# endif()
-
-# set(BOOST_INCLUDE_DIRS $boost_installation_prefix/include)
 
 add_library(fizzBuzz
 	src/fizzBuzzLib/include/fizzBuzz.h
@@ -26,8 +13,9 @@ add_library(fizzBuzz
 target_include_directories(fizzBuzz
 	PUBLIC
 		src/fizzBuzzLib/include/
-		src/fizzBuzzLib/src/
 )
+
+
 target_compile_options(fizzBuzz
 	PRIVATE
 		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
@@ -44,7 +32,6 @@ add_library(fizzBuzzProxy
 target_include_directories(fizzBuzzProxy
 	PUBLIC
 		src/fizzBuzzLib/include/
-		src/fizzBuzzLib/src/
 )
 target_compile_options(fizzBuzzProxy
 	PRIVATE
@@ -81,18 +68,18 @@ target_compile_options(say_hello_to_charly
  add_executable(unit_tests
  	tests/fizzBuzzTests.cpp
  )
+ # No need to add linked libraries include directories (see the further link instruction),
+ # since they are PUBLIC on that matter.
  target_include_directories(unit_tests
- 	PUBLIC
-		src/fizzBuzzLib/include/
- 		tests/
     PRIVATE
         ${Boost_INCLUDE_DIRS}
  )
+
 target_compile_definitions(unit_tests
     PRIVATE
         "BOOST_TEST_DYN_LINK=1"
 )
-# indicates the link paths
+# Indicates the link paths
  target_link_libraries(unit_tests
 	fizzBuzz
 	fizzBuzzProxy

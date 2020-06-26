@@ -1,4 +1,4 @@
-#include <../include/fizzBuzz.h>
+#include "fizzBuzz.h"
 
 fizzBuzz::fizzBuzz(int n) : in(n), str("") {}
 
