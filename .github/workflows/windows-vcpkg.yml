@@ -53,7 +53,7 @@ jobs:
       #       cd ..
       #       dir
         
-      #- name: Test
-      #  run: ctest
+      - name: Test
+        run: ctest
       
     
