@@ -1,4 +1,4 @@
-name: windows with vcpkg
+name: workflow on windows with vcpkg
 
 on: push
 
