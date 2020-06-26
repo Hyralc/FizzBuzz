@@ -42,16 +42,8 @@ jobs:
           buildDirectory: ${{ github.workspace }}/build
           cmakeBuildType: ${{ matrix.buildtype }}
       
-      - name: where am i
-        run: echo "%cd%"
-      
-      - name: list dir
+      - name: look around
         run: dir
-        
-      # - name : go up and look around
-      #  run: |
-      #       cd ..
-      #       dir
         
       - name: Test
         run: |
