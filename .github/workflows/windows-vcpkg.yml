@@ -43,10 +43,15 @@ jobs:
           cmakeBuildType: ${{ matrix.buildtype }}
       
       - name: where am i
-        run: echo %cd%
+        run: echo "%cd%"
       
-      - name: list
+      - name: list dir
         run: dir
+        
+      - name : go up and look around
+        run: |
+             cd ..
+             dir
         
       #- name: Test
       #  run: ctest
