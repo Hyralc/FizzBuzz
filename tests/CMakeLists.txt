@@ -1,4 +1,7 @@
 
+
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
 #
 # Create a target for executing the Boost unit tests.
 #
@@ -29,3 +32,5 @@ target_compile_definitions(unit_tests
  		$<$<CXX_COMPILER_ID:MSVC>:
  			/W4>
  )
+ 
+ add_test(NAME test1 COMMAND unit_tests)
