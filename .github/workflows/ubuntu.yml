@@ -12,7 +12,7 @@ jobs:
     - name: boost install
       run: sudo apt-get install libboost-all-dev
     - name: configure
-      run: cmake -S . -B build -DCMAKE_CXX_FLAGS="-Werror"
+      run: cmake -S . -B build -DCMAKE_CXX_FLAGS="-Werror" -DBUILD_TESTING=ON
     - name: build
       run: cmake --build build
     - name: test
