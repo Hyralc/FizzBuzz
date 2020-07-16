@@ -1,10 +1,9 @@
 
-if(BUILD_TEST_DEPS)
+if(BUILD_DEPS)
 	message("")
 	message("**********************************************************************")
 	message("** Download, build and installation of Boost Test...")
 	message("**********************************************************************")
-	# message("** CMAKE_CURRENT_BINARY_DIR : ${CMAKE_CURRENT_BINARY_DIR}")
 
 	# Creating the cmake file that is about to download, build and install boost.test
 	configure_file(

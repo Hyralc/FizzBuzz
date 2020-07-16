@@ -5,8 +5,8 @@
 #		+ With a package handler (for examples apt-get on unbuntu or vcpkg on windows)
 #		  To do this, set CMAKE_TOOLCHAIN_FILE as a command line argument.
 #		+ By downloading, compiling and installing it
-#		  To do this, set BUILD_TEST_DEPS to ON as a command line argument.
-#	- To find boost.test, you must use one of these two ways : not setting CMAKE_TOOLCHAIN_FILE or BUILD_TEST_DEPS
+#		  To do this, set BUILD_DEPS to ON as a command line argument.
+#	- To find boost.test, you must use one of these two ways : not setting CMAKE_TOOLCHAIN_FILE or BUILD_DEPS
 #	  leads to an error. Note that the first has priority over the second in case you set both cache variables.
 #
 # Usage (with unit tests and boost.test to run tests) :
@@ -14,7 +14,7 @@
 #	- with vcpkg for boost.test :
 #		> cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=release -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTING=ON . -B build
 #	- with boost.test installation from github
-#		> cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=release -DBUILD_TESTING=ON -DBUILD_TEST_DEPS=ON . -B build
+#		> cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=release -DBUILD_TESTING=ON -DBUILD_DEPS=ON . -B build
 #	Build :
 #		> cmake --build build --config Release
 # 	Run unit tests :
@@ -22,25 +22,21 @@
 #		> ctest -C Release
 #		> cd ..
 
-
 cmake_minimum_required(VERSION 3.5)
 project(Fizzbuzz LANGUAGES CXX)
 
 
-# option(BUILD_TEST_DEPS "This is settable from the command line" ON)
 if(CMAKE_TOOLCHAIN_FILE)
-	set(BUILD_TEST_DEPS OFF)
+	set(BUILD_DEPS OFF)
 endif()
 
 add_subdirectory(src)
-
-message("*** BUILD_TESTING : ${BUILD_TESTING}")
 
 if(BUILD_TESTING)
 	# include(CTest) # call enable_testing() and turn BUILD_TESTING to ON by default (among other useful things)
 	enable_testing()
 	
-	if(BUILD_TEST_DEPS)
+	if(BUILD_DEPS)
 		# Setting CMAKE_PREFIX_PATH so that find_package(boost.test...) finds "${FizzBuzz current path}/ext" boost.test
 		list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ext")
 	endif()

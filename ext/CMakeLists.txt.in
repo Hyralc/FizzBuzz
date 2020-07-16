@@ -14,9 +14,6 @@ else()
 	set(booststrap_script	"./bootstrap.sh")
 endif()
 
-# message("**** CMAKE_CURRENT_BINARY_DIR : ${CMAKE_CURRENT_BINARY_DIR}")
-# message("**** BOOST_DEST : ${BOOST_DEST}")
-
 ExternalProject_Add(
 	boost-test-proj
 	SOURCE_DIR			"${BOOST_DEST}"
