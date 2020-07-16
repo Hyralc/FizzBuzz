@@ -34,6 +34,7 @@ endif()
 
 add_subdirectory(src)
 
+message("*** BUILD_TESTING : ${BUILD_TESTING}")
 
 if(BUILD_TESTING)
 	# include(CTest) # call enable_testing() and turn BUILD_TESTING to ON by default (among other useful things)
