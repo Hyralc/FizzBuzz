@@ -8,6 +8,19 @@
 #		  To do this, set BUILD_TEST_DEPS to ON as a command line argument.
 #	- To find boost.test, you must use one of these two ways : not setting CMAKE_TOOLCHAIN_FILE or BUILD_TEST_DEPS
 #	  leads to an error. Note that the first has priority over the second in case you set both cache variables.
+#
+# Usage (with unit tests and boost.test to run tests) :
+#	Configuration :
+#	- with vcpkg for boost.test :
+#		> cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=release -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTING=ON . -B build
+#	- with boost.test installation from github
+#		> cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=release -DBUILD_TESTING=ON -DBUILD_TEST_DEPS=ON . -B build
+#	Build :
+#		> cmake --build build --config Release
+# 	Run unit tests :
+#		> cd build
+#		> ctest -C Release
+#		> cd ..
 
 
 cmake_minimum_required(VERSION 3.5)

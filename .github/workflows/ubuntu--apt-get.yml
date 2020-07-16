@@ -1,9 +1,9 @@
-name: workflow on ubuntu
+name: ubuntu with apt-get
 
 on: [push]
 
 jobs:
-  build-ubuntu:
+  ubuntu--apt-get:
 
     runs-on: ubuntu-latest
 

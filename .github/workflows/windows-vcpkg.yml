@@ -1,10 +1,10 @@
-name: workflow on windows with vcpkg
+name: windows with vcpkg
 
 on: push
 
 jobs:
 
-  build-on-windows:
+  windows--vcpkg:
 
     runs-on: ${{ matrix.os }}
 
