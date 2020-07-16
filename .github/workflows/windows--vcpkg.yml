@@ -1,6 +1,6 @@
 name: windows with vcpkg
 
-# on: push
+on: push
 
 jobs:
 

@@ -1,6 +1,6 @@
 name: ubuntu with apt-get
 
-# on: [push]
+on: [push]
 
 jobs:
   ubuntu--apt-get:

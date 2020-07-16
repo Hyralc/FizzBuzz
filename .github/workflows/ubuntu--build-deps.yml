@@ -1,6 +1,6 @@
 name: ubuntu - deps downloaded
 
-# on: [push]
+on: [push]
 
 jobs:
   ubuntu--build-deps:
