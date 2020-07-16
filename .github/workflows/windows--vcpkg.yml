@@ -41,7 +41,7 @@ jobs:
           cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
           buildDirectory: ${{ github.workspace }}/build
           cmakeBuildType: ${{ matrix.buildtype }}
-          cmakeAppendedArgs: '-DBUILD_TESTING=ON'
+          cmakeAppendedArgs: '-DBUILD_TESTING=ON '
       
       - name: look around
         run: dir
