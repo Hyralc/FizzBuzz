@@ -43,7 +43,8 @@ In the process of installing **fizzbuzz**, the only command that differ over sys
 - As already said about package manager :
 	- On linux (Ubuntu), we use native **apt-get**. 
 	- On Windows, we use **vcpkg**. 
-- There are 2 important variables about running unit tests when configuring with **cmake** : **BUILD_TESTING** and **BUILD_DEPS**.
+- There are 3 important variables about running unit tests when configuring with **cmake** : **CMAKE_TOOLCHAIN_FILE**, **BUILD_TESTING** and **BUILD_DEPS**.
+- **CMAKE_TOOLCHAIN_FILE** : only on Windows, causes cmake to find **boost.test** in **vcpkg**. This variable is given to cmake as a command line argument and must be valued with the path of your **vcpkg**'s cmake file (vcpkg.cmake).
 - **BUILD_TESTING** : not given or turned to **OFF** as a command line argument of **cmake**, unit tests won't be compiled (you won't be able to run them). If turned to **ON**, cmake will try to compile unit tests program and find boost.test to link against it.
 - **BUILD_DEPS** : if turned to **ON**, **cmake** will try to download boost.test and install it at configuration step.  
 
@@ -55,7 +56,7 @@ Let's look at the **cmake** depending on your system and choice for **boost.test
 ### On Windows
 Let **vcpkg_path** be the variable containing the absolute path to your vcpkg.
 ``` bash
-	\> cmake -G "Visual Studio 16 2019" -A x64 [-DCMAKE_BUILD_TYPE=release] -DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake [-DBUILD_TESTING=ON] [-DBUILD_DEPS=ON] . -B build
+	\> cmake -G "Visual Studio 16 2019" -A x64 [-DCMAKE_BUILD_TYPE=release] [-DCMAKE_TOOLCHAIN_FILE=${vcpkg_path}/scripts/buildsystems/vcpkg.cmake] [-DBUILD_TESTING=ON] [-DBUILD_DEPS=ON] . -B build
 ```
 
 **Remark** :
