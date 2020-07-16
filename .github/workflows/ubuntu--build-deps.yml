@@ -1,0 +1,30 @@
+name: ubuntu with apt-get
+
+on: [push]
+
+jobs:
+  ubuntu--apt-get:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        buildtype: [Release]
+
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: boost install
+      run: sudo apt-get install libboost-all-dev
+
+    - name: configure with cmake
+      run: cmake -S . -B build -DCMAKE_CXX_FLAGS="-Werror" -DBUILD_TESTING=ON -DBUILD_DEPS=ON
+
+    - name: build with cmake
+      run: cmake --build build --config ${{ matrix.buildtype }}
+
+    - name: test
+        run: |
+             cd build
+             ctest -C ${{ matrix.buildtype }}
