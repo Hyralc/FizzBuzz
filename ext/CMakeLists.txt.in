@@ -8,10 +8,13 @@ include(ExternalProject)
 set(BOOST_DEST @CMAKE_CURRENT_SOURCE_DIR@/boost)
 
 set(booststrap_script)
+set(b2)
 if (WIN32 OR WIN64)
 	set(booststrap_script	"./bootstrap.bat")
+	set(b2 "./b2.exe")
 else()
 	set(booststrap_script	"./bootstrap.sh")
+	set(b2 "./b2")
 endif()
 
 ExternalProject_Add(
@@ -53,6 +56,6 @@ ExternalProject_Add(
 	# We set the following commands content (even with an empty string) : otherwise a default non convenient command is run.
 	UPDATE_COMMAND		${booststrap_script}
 	CONFIGURE_COMMAND	""
-	BUILD_COMMAND		./b2.exe address-model=64 architecture=x86 link=static --prefix=. install
+	BUILD_COMMAND		${b2} address-model=64 architecture=x86 link=static --prefix=. install
 	INSTALL_COMMAND		""
 )
