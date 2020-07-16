@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: lukka/get-cmake@latest
+      - uses: lukka/get-cmake@v3.15.2
 
       - name: Restore artifacts, or run vcpkg, build and cache artifacts
         uses: lukka/run-vcpkg@master
