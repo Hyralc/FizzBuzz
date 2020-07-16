@@ -3,7 +3,7 @@ name: ubuntu - deps downloaded
 on: [push]
 
 jobs:
-  ubuntu--apt-get:
+  ubuntu--build-deps:
 
     runs-on: ubuntu-latest
 
