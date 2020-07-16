@@ -25,6 +25,6 @@ jobs:
       run: cmake --build build --config ${{ matrix.buildtype }}
 
     - name: test
-        run: |
-             cd build
-             ctest -C ${{ matrix.buildtype }}
+      run: |
+           cd build
+           ctest -C ${{ matrix.buildtype }}
