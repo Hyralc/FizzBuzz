@@ -21,10 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: lukka/get-cmake@v3.15.2
+      - uses: lukka/get-cmake@latest
 
       - name: Restore artifacts, or run vcpkg, build and cache artifacts
         uses: lukka/run-vcpkg@master
+        id: run-vcpkg
         with:
           vcpkgArguments: '${{ matrix.vcpkgPackages }}'
           vcpkgTriplet: '${{ matrix.triplet }}'
@@ -34,15 +35,11 @@ jobs:
       - name: Prints outputs of run-vcpkg task
         run: echo "'${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}' '${{  steps.runvcpkg.outputs.RUNVCPKG_VCPKG_TRIPLET_OUT }}' "
 
-      - name: Building with CMake
-        uses: lukka/run-cmake@v2
-        with:
-          useVcpkgToolchainFile: true
-          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-          buildDirectory: ${{ github.workspace }}/build
-          cmakeBuildType: ${{ matrix.buildtype }}
-          cmakeGenerator: VS16Win64
-          cmakeAppendedArgs: '-DBUILD_TESTING=ON'
+      - name: Configuring with cmake
+        run: cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=${{ matrix.buildtype }} -DCMAKE_TOOLCHAIN_FILE=${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTING=ON . -B build
+
+      - name: Building with cmake
+        run: cmake --build build --config ${{ matrix.buildtype }}
       
       - name: look around
         run: dir
