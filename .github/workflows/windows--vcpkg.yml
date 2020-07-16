@@ -25,7 +25,7 @@ jobs:
 
       - name: Restore artifacts, or run vcpkg, build and cache artifacts
         uses: lukka/run-vcpkg@master
-        id: run-vcpkg
+        id: runvcpkg
         with:
           vcpkgArguments: '${{ matrix.vcpkgPackages }}'
           vcpkgTriplet: '${{ matrix.triplet }}'
