@@ -1,6 +1,9 @@
 name: ubuntu - deps downloaded
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   ubuntu--build-deps:

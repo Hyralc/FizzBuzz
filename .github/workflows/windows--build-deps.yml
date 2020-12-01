@@ -1,6 +1,9 @@
 name: windows - deps downloaded
 
-on: push
+on:
+  push:
+    branches:
+    - master
 
 jobs:
 
