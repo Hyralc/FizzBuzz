@@ -46,3 +46,22 @@ if(BUILD_TESTING)
 	
 	add_subdirectory(tests)
 endif()
+
+# Only for running python tests (with pyTest) using CTest
+# add_subdirectory(ctest-python)
+
+
+message("*** CMAKE_CURRENT_SOURCE_DIR : ${CMAKE_CURRENT_SOURCE_DIR}")
+message("*** python-tests : ${CMAKE_CURRENT_SOURCE_DIR}/ctest-python/python-tests")
+
+enable_testing()
+
+find_package(Python3 EXACT 3.6 COMPONENTS Interpreter)
+
+if(Python3_Interpreter_FOUND)
+	add_test(
+			NAME small-python-tests
+			COMMAND Python3::Interpreter -m pytest -v -q test_small_python_tests.py
+			WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ctest-python/python-tests"
+			)
+endif()

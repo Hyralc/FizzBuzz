@@ -1,6 +1,9 @@
 name: ubuntu with apt-get
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   ubuntu--apt-get:
