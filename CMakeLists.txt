@@ -56,7 +56,7 @@ message("*** python-tests : ${CMAKE_CURRENT_SOURCE_DIR}/ctest-python/python-test
 
 enable_testing()
 
-find_package(Python3 COMPONENTS Interpreter)
+find_package(Python3 3.6 COMPONENTS Interpreter)
 
 if(Python3_Interpreter_FOUND)
 	add_test(
