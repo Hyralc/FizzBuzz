@@ -6,7 +6,7 @@ import os
 @pytest.fixture
 def get_repo(scope="session", autouse = True):
 	
-	return git.Repo.clone_from('https://gitlab.com/antares-rte/sandbox.git', os.getcwd() + os.sep + 'sandbox')
+	return git.Repo.clone_from('https://github.com/AntaresSimulatorTeam/Antares_Simulator_Tests.git', os.getcwd() + os.sep + 'Antares_Simulator_Tests')
 
 
 # print("hello")
